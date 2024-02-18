@@ -17,19 +17,34 @@ pokemonForm.addEventListener("submit", (event: Event) => {
 });
 
 const fetchPokemon = async (pokemon: string) => {
+  pokemonName.innerHTML = "Loading...";
+  pokemonNumber.innerHTML = "";
+
   const pokemonApiResponse = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`
   );
 
-  const data: Pokemon = await pokemonApiResponse.json();
-  return data;
+  if (pokemonApiResponse.status === 200) {
+    const data: Pokemon = await pokemonApiResponse.json();
+    return data;
+  }
 };
 
 const renderPokemon = async (pokemon: string) => {
   const data = await fetchPokemon(pokemon);
 
-  pokemonName.innerHTML = data.name;
-  pokemonNumber.innerHTML = data.id.toString();
-  pokemonImage.src =
-    data.sprites.versions["generation-v"]["black-white"].animated.front_default;
+  if (data) {
+    pokemonName.innerHTML = data.name;
+    pokemonNumber.innerHTML = data.id.toString();
+    pokemonImage.src =
+      data.sprites.versions["generation-v"][
+        "black-white"
+      ].animated.front_default;
+  } else {
+    pokemonName.innerHTML = "Not Found";
+    pokemonNumber.innerHTML = "404";
+    pokemonImage.src = "";
+  }
 };
+
+renderPokemon('1');
