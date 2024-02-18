@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon/favicon-16x16.png" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>PokéDex</title>
+  </head>
+  <body>
+    <main>
+      <img src="" alt="pokemon" class="pokemon-image" />
+      <h1 class="pokemon-data">
+        <em class="pokemon-number">6</em> -
+        <em class="pokemon-name">charizard</em>
+      </h1>
+      <form class="pokemon-form">
+        <input
+          type="search"
+          class="input-search"
+          placeholder="Name Or Number"
+          required
+        />
+      </form>
+      <section class="buttons">
+        <button class="button btn-prev">Prev &lt;</button>
+        <button class="button btn-nex">Next &gt;</button>
+      </section>
+      <img src="./images/pokedex.png" alt="pokedex" class="pokedex" />
+    </main>
+    <script src="dist/bundle.js" defer></script>
+  </body>
+</html>
